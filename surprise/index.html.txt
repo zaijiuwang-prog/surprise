@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>给于朦胧的一份小惊喜 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #fff6f0, #ffffff);
+      color: #333;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 30px 20px 50px;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+      color: #e26a6a;
+    }
+
+    .message {
+      font-size: 1.15em;
+      line-height: 1.8;
+      margin: 25px 0 35px;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    .photo img {
+      width: 100%;
+      max-width: 640px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+      margin-top: 10px;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>🎁 一份小惊喜</h1>
+
+    <div class="message">
+      <p>亲爱的 <strong>于朦胧</strong>：</p>
+      <p>
+        这是我特别为你准备的一份惊喜。<br>
+        祝你每天都开心，健康，被爱包围。
+      </p>
+      <p style="margin-top:20px;">
+        来自地球上爱你的朋友们 💫
+      </p>
+    </div>
+
+    <div class="photo">
+      <img src="photo.png" alt="为你准备的照片">
+    </div>
+
+    <div class="footer">
+      <p>当你点开这个页面的时候，希望你正被温柔对待 ✨</p>
+    </div>
+  </div>
+</body>
+</html>
