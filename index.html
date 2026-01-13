@@ -10,9 +10,10 @@ html, body {
   margin:0; padding:0; background:#000; overflow:hidden;
   font-family:"PingFang SC","Microsoft YaHei",sans-serif; text-align:center;
 }
-.fireworks-container {
+video#fireworksVideo {
   position:fixed; top:0; left:0;
   width:100vw; height:100vh;
+  object-fit:cover;
   z-index:1;
 }
 .blessing {
@@ -38,14 +39,17 @@ h1 { color:#e26a6a; font-size:2.1em; }
 
 <body>
 
-<div class="fireworks-container" id="fireworks"></div>
+<!-- 烟花视频 -->
+<video id="fireworksVideo" src="fireworks.mp4" autoplay muted playsinline loop></video>
 
+<!-- 祝福文字 -->
 <div class="blessing" id="blessing">
   🎉 于朦胧祝大家 🎉<br>
   新年快乐！<br>
   马年马到成功！ 🐎✨
 </div>
 
+<!-- 照片和祝福内容 -->
 <div class="container" id="content">
   <h1>🎁 新年惊喜</h1>
   <div class="message">
@@ -59,54 +63,35 @@ h1 { color:#e26a6a; font-size:2.1em; }
   <div class="footer">当烟花散尽，温柔仍在 ✨</div>
 </div>
 
+<!-- 背景音乐 -->
 <audio id="bgm" src="bgm.mp3" preload="auto" muted loop></audio>
-
-<!-- 加载 fireworks‑js -->
-<script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
 
 <script>
 const audio = document.getElementById("bgm");
+const video = document.getElementById("fireworksVideo");
 let started = false;
 
-// 点击或触摸触发音乐和烟花
 function startExperience() {
-  if (started) return;
+  if(started) return;
   started = true;
 
-  // 播放音乐
+  // 播放音乐和视频
   audio.muted = false;
   audio.play().catch(()=>{});
-
-  // 初始化 fireworks‑js
-  const container = document.getElementById("fireworks");
-  const fireworks = new FireworksJS.Fireworks(container, {
-    autoresize: true,
-    opacity: 0.6,
-    gravity: 1.2,
-    delay: { min: 15, max: 30 },
-    rocketsPoint: { min: 50, max: 80 },
-    brightness: { min: 50, max: 80 },
-    intensity: 30,
-    traceLength: 3,
-    traceSpeed: 8,
-    explosion: 6,
-    flickering: 60,
-    lineWidth: { explosion: { min: 1, max: 3 }, trace: { min: 1, max: 2 } },
-    hue: { min: 0, max: 360 }
-  });
-  fireworks.start();
+  video.play().catch(()=>{});
 
   // 祝福文字淡出
-  setTimeout(()=>{ document.getElementById("blessing").style.opacity = 0; }, 12000);
-
-  // 结束烟花、展示内容
   setTimeout(()=>{
-    fireworks.stop(true);
+    document.getElementById("blessing").style.opacity = 0;
+  }, 12000);
+
+  // 烟花视频结束或时间到 → 展示内容
+  setTimeout(()=>{
     document.getElementById("content").classList.add("show");
   }, 16000);
 }
 
-// 微信 / 手机事件
+// 微信 / 手机点击触发
 document.addEventListener("touchstart", startExperience, { once:true });
 document.addEventListener("click", startExperience, { once:true });
 </script>
