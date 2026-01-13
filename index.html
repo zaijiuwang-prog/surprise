@@ -11,7 +11,8 @@ html, body {
   font-family:"PingFang SC","Microsoft YaHei",sans-serif; text-align:center;
 }
 video#fireworksVideo {
-  position:fixed; top:0; left:0;
+  position:fixed;
+  top:0; left:0;
   width:100vw; height:100vh;
   object-fit:cover;
   z-index:1;
@@ -39,7 +40,7 @@ h1 { color:#e26a6a; font-size:2.1em; }
 
 <body>
 
-<!-- 烟花视频 -->
+<!-- 烟花视频背景 -->
 <video id="fireworksVideo" src="fireworks.mp4" autoplay muted playsinline loop></video>
 
 <!-- 祝福文字 -->
@@ -72,26 +73,26 @@ const video = document.getElementById("fireworksVideo");
 let started = false;
 
 function startExperience() {
-  if(started) return;
-  started = true;
+    if(started) return;
+    started = true;
 
-  // 播放音乐和视频
-  audio.muted = false;
-  audio.play().catch(()=>{});
-  video.play().catch(()=>{});
+    // 播放音乐和视频
+    audio.muted = false;
+    audio.play().catch(()=>{console.log("音乐播放失败")});
+    video.play().catch(()=>{console.log("视频播放失败")});
 
-  // 祝福文字淡出
-  setTimeout(()=>{
-    document.getElementById("blessing").style.opacity = 0;
-  }, 12000);
+    // 祝福文字淡出
+    setTimeout(()=>{
+        document.getElementById("blessing").style.opacity = 0;
+    }, 12000);
 
-  // 烟花视频结束或时间到 → 展示内容
-  setTimeout(()=>{
-    document.getElementById("content").classList.add("show");
-  }, 16000);
+    // 视频/烟花结束 → 展示内容
+    setTimeout(()=>{
+        document.getElementById("content").classList.add("show");
+    }, 16000);
 }
 
-// 微信 / 手机点击触发
+// 微信 / 手机触摸点击触发
 document.addEventListener("touchstart", startExperience, { once:true });
 document.addEventListener("click", startExperience, { once:true });
 </script>
